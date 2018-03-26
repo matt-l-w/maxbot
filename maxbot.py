@@ -1,7 +1,8 @@
+import os
 import re
 import markovify
 
-original_file = 'data/2018_06_03-OfficialSteelbankForever.txt'
+original_file = 'data/2018-03-26_OfficialSteelbankForever.txt'
 cleaned_file = 'data/cleaned.csv'
 author = 'Max Aghaeipour'
 
