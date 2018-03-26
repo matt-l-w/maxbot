@@ -1,0 +1,43 @@
+<head>
+    <title>Markov MaxBot 5000</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <style>
+    body,h1 {font-family: "Raleway", sans-serif; text-align: center;}
+    body, html {height: 100%;min-height: 100%}
+    .w3-col {width: 100%}
+    </style>
+    <script>
+        function handleClick() {
+            var xmlHttp = new XMLHttpRequest();
+            xmlHttp.open( "GET", "https://e8np97gque.execute-api.eu-west-2.amazonaws.com/prod/", false); // false for synchronous request
+            xmlHttp.send( null );
+            response = JSON.parse(xmlHttp.responseText);
+            var text;
+            if (response["statusCode"] != 200) {
+                text = "There was an error generating a sentence, sorry!";                   
+            } else {
+                text = response["sentence"];
+            }
+            document.getElementById("message").innerText = text;
+        }
+    </script>
+</head>
+<body>
+    <h1>Markov MaxBot 5000</h1>
+    <div class="w3-row w3-text-black">
+        <div class="w3-col">
+            <h2 id="message"></h2>
+        </div>
+    </div>
+    <div class="w3-row">
+            <div class="w3-col w3-left w3-container" style="width:10%"></div>
+            <div class="w3-col w3-right w3-container" style="width:10%"></div>
+            <div class="w3-rest w3-container">
+                    <button class="w3-btn w3-animate-top w3-black w3-text-white" onclick="handleClick()">Generate Wisdom</button>
+            </div>
+    </div>
+    
+</body>
